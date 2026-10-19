@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>午餐時光機 - 互動展覽</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎒 午餐時光機：童年惡夢大投票</h1>
+        <p class="subtitle">選出當年最讓你痛苦的那道「營養午餐魔王」！</p>
+
+        <div class="vote-container">
+            <!-- 選項 1 -->
+            <div class="vote-card">
+                <!-- 這裡可以放你的圖片，請把 src 換成你的圖片網址或檔案路徑 -->
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300" alt="三色豆">
+                <h3>🟢 三色豆</h3>
+                <p>紅蘿蔔 + 青豆 + 玉米，永遠的三角噩夢</p>
+                <span class="count" id="count1">12 票</span>
+                <button class="vote-btn" onclick="vote(1)">我也吃過這苦 (+1)</button>
+            </div>
+
+            <!-- 選項 2 -->
+            <div class="vote-card">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=300" alt="螢光咖哩">
+                <h3>🟡 螢光咖哩</h3>
+                <p>神祕黃色勾芡，永遠撈不到肉塊</p>
+                <span class="count" id="count2">8 票</span>
+                <button class="vote-btn" onclick="vote(2)">這真的母湯 (+1)</button>
+            </div>
+
+            <!-- 選項 3 -->
+            <div class="vote-card">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=300" alt="電話線">
+                <h3>🔵 電話線</h3>
+                <p>軟爛海帶結，咬不斷又神祕</p>
+                <span class="count" id="count3">15 票</span>
+                <button class="vote-btn" onclick="vote(3)">陰影面積極大 (+1)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

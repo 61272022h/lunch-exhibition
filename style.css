@@ -1,0 +1,72 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #fcf8f2;
+    color: #333;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h1 { 
+    color: #d35400; 
+    font-size: 28px; 
+    margin-bottom: 5px;
+}
+
+.subtitle { 
+    color: #7f8c8d; 
+    margin-bottom: 30px; 
+}
+
+.vote-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.vote-card {
+    background: white;
+    border: 2px solid #f39c12;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.vote-card:hover {
+    transform: translateY(-5px);
+}
+
+.vote-card h3 { 
+    margin: 10px 0; 
+    color: #e67e22; 
+}
+
+.vote-btn {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.vote-btn:hover {
+    background-color: #d35400;
+}
+
+.count {
+    font-size: 20px;
+    font-weight: bold;
+    color: #c0392b;
+    margin-top: 10px;
+    display: block;
+}
