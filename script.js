@@ -1,25 +1,35 @@
-// 記錄各選項初始票數的物件
-let votes = { 
-    1: 12, 
-    2: 8, 
-    3: 15 
+// 初始化票數（如果瀏覽器裡沒有紀錄，則從 0 開始）
+let votes = {
+    1: parseInt(localStorage.getItem('vote1')) || 0,
+    2: parseInt(localStorage.getItem('vote2')) || 0,
+    3: parseInt(localStorage.getItem('vote3')) || 0
 };
 
-// 點擊投票時觸發的函數
-function vote(id) {
-    votes[id]++; // 對應的票數 +1
-    
-    // 即時更新畫面上顯示的數字
-    document.getElementById(`count${id}`).textContent = votes[id] + " 票";
-    
-    // 找到被點擊的那顆按鈕，給它一點可愛的文字回饋
-    const clickedBtn = event.target;
-    clickedBtn.textContent = "已登記！😂";
-    clickedBtn.style.backgroundColor = "#27ae60"; // 變成綠色
-    
-    // 1秒後恢復原狀
-    setTimeout(() => {
-        clickedBtn.textContent = "我也吃過這苦 (+1)";
-        clickedBtn.style.backgroundColor = "#e67e22";
-    }, 1000);
+// 畫面載入時更新顯示數字
+window.onload = function() {
+    updateDisplay();
+};
+
+// 投票函式
+function vote(option) {
+    votes[option]++;
+    // 儲存到瀏覽器記憶體中
+    localStorage.setItem('vote' + option, votes[option]);
+    updateDisplay();
+}
+
+// 歸零機制函式
+function resetVotes() {
+    if (confirm("確定要把所有票數歸零嗎？")) {
+        votes = { 1: 0, 2: 0, 3: 0 };
+        localStorage.clear(); // 清除儲存的票數
+        updateDisplay();
+    }
+}
+
+// 更新畫面的票數顯示
+function updateDisplay() {
+    document.getElementById('count1').textContent = votes[1] + ' 票';
+    document.getElementById('count2').textContent = votes[2] + ' 票';
+    document.getElementById('count3').textContent = votes[3] + ' 票';
 }

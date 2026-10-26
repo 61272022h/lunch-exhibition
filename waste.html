@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廚餘 101 大樓</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding: 30px; }
+        .building-container {
+            width: 150px;
+            height: 300px;
+            background: #333;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            border: 2px solid #555;
+        }
+        #tower {
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to top, #e67e22, #f1c40f);
+            transition: height 0.4s ease;
+        }
+        .action-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .action-btn:hover { background: #c0392b; }
+    </style>
+</head>
+<body>
+
+    <h1>🏢 倒廚餘瞬間：挑戰「廚餘 101 大樓」</h1>
+    <p>點擊按鈕模擬將不合胃口的午餐倒入桶內，觀看廚餘累積的高度！</p>
+
+    <div class="building-container">
+        <div id="tower"></div>
+    </div>
+    
+    <h3 id="height-text">目前累積高度：20 公尺</h3>
+    <button class="action-btn" onclick="dumpFood()">🗑️ 倒掉這盆午餐 (+1 桶)</button>
+
+    <script>
+        let currentHeight = 20;
+
+        function dumpFood() {
+            currentHeight += 15;
+            if (currentHeight >= 100) {
+                currentHeight = 100;
+                document.getElementById('height-text').textContent = "🚨 警戒：廚餘高度已超越台北 101，直衝大氣層！";
+            } else {
+                document.getElementById('height-text').textContent = `目前累積高度：${currentHeight * 5} 公尺`;
+            }
+            document.getElementById('tower').style.height = currentHeight + "%";
+        }
+    </script>
+</body>
+</html>

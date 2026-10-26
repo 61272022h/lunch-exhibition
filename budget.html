@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐盤黑盒子 - 75元預算分配</title>
+    <style>
+        body { font-family: sans-serif; background-color: #2c3e50; color: white; text-align: center; padding: 30px; }
+        .container { max-width: 600px; margin: 0 auto; background: #34495e; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .budget-group { margin: 20px 0; text-align: left; }
+        input[type=range] { width: 100%; cursor: pointer; }
+        .result { font-size: 24px; color: #e74c3c; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💰 解構一餐 75 元</h1>
+        <p>總預算 75 元，請調整各項成本，看看「實體食材」剩下多少？</p>
+
+        <div class="budget-group">
+            <label>👨‍🍳 人事與廚工薪資: <span id="labor-val">20</span> 元</label>
+            <input type="range" id="labor" min="10" max="40" value="20" oninput="updateBudget()">
+        </div>
+
+        <div class="budget-group">
+            <label>🚚 物流與運輸成本: <span id="logistics-val">15</span> 元</label>
+            <input type="range" id="logistics" min="5" max="30" value="15" oninput="updateBudget()">
+        </div>
+
+        <div class="budget-group">
+            <label>⚡ 水電與設備折舊: <span id="utility-val">10</span> 元</label>
+            <input type="range" id="utility" min="5" max="20" value="10" oninput="updateBudget()">
+        </div>
+
+        <hr style="border-color: #55STER; margin: 20px 0;">
+
+        <div class="result">
+            🥦 剩給實體食材的費用：<span id="food-cost">30</span> 元
+        </div>
+        <p id="comment" style="font-size: 14px; color: #f1c40f;">提示：食材費偏低，將很難買到優質生鮮蔬果！</p>
+    </div>
+
+    <script>
+        function updateBudget() {
+            let total = 75;
+            let labor = parseInt(document.getElementById('labor').value);
+            let logistics = parseInt(document.getElementById('logistics').value);
+            let utility = parseInt(document.getElementById('utility').value);
+
+            document.getElementById('labor-val').textContent = labor;
+            document.getElementById('logistics-val').textContent = logistics;
+            document.getElementById('utility-val').textContent = utility;
+
+            let foodCost = total - (labor + logistics + utility);
+            document.getElementById('food-cost').textContent = foodCost;
+
+            let commentEl = document.getElementById('comment');
+            if (foodCost < 25) {
+                commentEl.textContent = "⚠️ 警告：食材費見底！這就是為什麼便當常出現冷凍加工食品與三色豆的主因。";
+                commentEl.style.color = "#e74c3c";
+            } else if (foodCost < 40) {
+                commentEl.textContent = "⚠️ 提示：食材費有限，僅能採購大宗批發的廉價食材。";
+                commentEl.style.color = "#f1c40f";
+            } else {
+                commentEl.textContent = "✅ 食材充裕，但要注意其他營運成本是否會赤字！";
+                commentEl.style.color = "#2ecc71";
+            }
+        }
+    </script>
+</body>
+</html>
